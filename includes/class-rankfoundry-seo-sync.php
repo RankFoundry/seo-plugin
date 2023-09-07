@@ -40,13 +40,29 @@ class RankFoundry_SEO_Sync {
         }
 
         // Gather WordPress data
-        $categories = get_categories([
+        $categories_raw = get_categories([
             'orderby' => 'name',
             'hide_empty' => 0,
             'parent' => 0
         ]);
 
-        $users = get_users();
+        $categories = array_map(function($category) {
+            return [
+                'id' => $category->cat_ID,
+                'name' => $category->name
+            ];
+        }, $categories_raw);
+
+        $users_raw = get_users();
+
+        $users = array_map(function($user) {
+            return [
+                'id' => $user->ID,
+                'user_email' => $user->user_email,
+                'display_name' => $user->display_name,
+                'role' => $user->roles[0]
+            ];
+        }, $users_raw);
 
         // Construct payload
         $payload = [
