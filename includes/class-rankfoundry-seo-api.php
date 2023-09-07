@@ -31,6 +31,11 @@ class RankFoundry_SEO_API {
         if (isset($params['slug'])) {
             $post_data['post_name'] = sanitize_title($params['slug']);
         }
+
+        // Check if excerpt is set in the API call and add it to the post data
+        if (isset($params['excerpt'])) {
+            $post_data['post_excerpt'] = sanitize_textarea_field($params['excerpt']);
+        }
     
         $post_id = wp_insert_post($post_data);
     
