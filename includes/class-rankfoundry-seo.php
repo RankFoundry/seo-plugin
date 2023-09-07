@@ -57,6 +57,7 @@ class RankFoundry_SEO {
         
         // Add custom cron schedules
         add_filter('cron_schedules', array('RankFoundry_SEO_Cron', 'custom_cron_schedules'));
+
     }
 
     /**
@@ -89,7 +90,7 @@ class RankFoundry_SEO {
     private function define_admin_hooks() {
 
         require_once RANKFOUNDRY_SEO_PLUGIN_DIR . 'admin/class-rankfoundry-seo-admin.php';
-        $this->admin = new RankFoundry_SEO_Admin($this->get_plugin_name(), $this->get_version());
+        $this->admin = new RankFoundry_SEO_Admin($this->plugin_name, $this->version);
 
         add_action('admin_menu', array($this->admin, 'add_settings_page'));
         add_action('admin_init', array($this->admin, 'register_settings'));

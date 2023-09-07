@@ -18,7 +18,8 @@ class RankFoundry_SEO_Admin {
             'RankFoundry SEO',
             'manage_options',
             $this->plugin_name,
-            array($this, 'display_settings_page')
+            array($this, 'display_settings_page'),
+            plugins_url('rankfoundry-seo/assets/images/rankfoundry-seo-icon.svg')
         );
     }
 
