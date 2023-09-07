@@ -26,6 +26,11 @@ class RankFoundry_SEO_API {
             'post_author'   => intval($params['author']),
             'post_category' => [intval($params['category'])], // Assuming category is an ID
         ];
+
+        // Check if slug is set in the API call and add it to the post data
+        if (isset($params['slug'])) {
+            $post_data['post_name'] = sanitize_title($params['slug']);
+        }
     
         $post_id = wp_insert_post($post_data);
     
