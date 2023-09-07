@@ -1,5 +1,7 @@
 <?php
 
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
 /**
  * RankFoundry SEO Main Class
  */
@@ -59,7 +61,7 @@ class RankFoundry_SEO {
      * Load the update checker
      */
     private function initialize_update_checker() {
-        $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+        $myUpdateChecker = PucFactory::buildUpdateChecker(
             'https://github.com/rankfoundry/seo-plugin/',
             RANKFOUNDRY_SEO_FILE,
             'rankfoundry-seo'
