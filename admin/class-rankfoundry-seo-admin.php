@@ -13,13 +13,15 @@ class RankFoundry_SEO_Admin {
 
     // Register settings page under WP Settings
     public function add_settings_page() {
+        $menu_icon = file_get_contents(RANKFOUNDRY_SEO_PLUGIN_DIR . 'assets/images/rankfoundry-seo-icon.svg')
+
         add_menu_page(
             'RankFoundry SEO Settings',   // Page title
             'RankFoundry SEO',            // Menu title
             'manage_options',             // Capability
             $this->plugin_name,           // Menu slug
             array($this, 'display_settings_page'),  // Callback function
-            plugins_url('rankfoundry-seo/assets/images/rankfoundry-seo-icon.svg'),       // Icon URL (optional, you can use a dashicon)
+            'data:image/svg+xml;base64,' . base64_encode( $menu_icon ),       // Icon URL (optional, you can use a dashicon)
             100                             // Position (optional)
         );
     }
