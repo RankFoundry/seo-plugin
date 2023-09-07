@@ -13,7 +13,7 @@ class RankFoundry_SEO_Admin {
 
     // Register settings page under WP Settings
     public function add_settings_page() {
-        $menu_icon = file_get_contents(RANKFOUNDRY_SEO_PLUGIN_DIR . 'assets/images/rankfoundry-seo-icon.svg')
+        $menu_icon = file_get_contents(RANKFOUNDRY_SEO_PLUGIN_DIR . 'assets/images/rankfoundry-seo-icon.svg');
 
         add_menu_page(
             'RankFoundry SEO Settings',   // Page title
