@@ -21,7 +21,7 @@ class RankFoundry_SEO_Sync {
         $this->version = $version;
     }
 
-    public function generate_secret_key(){
+    public static function generate_secret_key(){
         if (!get_option('rankfoundry_seo_secret_key')) {
             $secret_key = wp_generate_password(32, false, false);
             update_option('rankfoundry_seo_secret_key', $secret_key);
