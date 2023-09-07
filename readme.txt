@@ -15,6 +15,10 @@ An integration bridge between WordPress and RankFoundry SEO, enabling real-time 
 
 == Changelog ==
 
+= 1.0.5 =
+* Remove: Logo
+* Add: Top-Level Admin Menu
+
 = 1.0.4 =
 * Fix: Fatal Error - Admin Hooks
 * Add: Custom Icon & Logo
