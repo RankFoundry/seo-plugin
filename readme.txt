@@ -15,6 +15,9 @@ An integration bridge between WordPress and RankFoundry SEO, enabling real-time 
 
 == Changelog ==
 
+= 1.0.12 =
+* Add: Rest API Create Post
+
 = 1.0.11 =
 * Update: Sync Payload Data
 

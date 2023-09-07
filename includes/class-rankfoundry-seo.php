@@ -58,6 +58,9 @@ class RankFoundry_SEO {
         // Add custom cron schedules
         add_filter('cron_schedules', array('RankFoundry_SEO_Cron', 'custom_cron_schedules'));
 
+        require_once RANKFOUNDRY_SEO_PLUGIN_DIR . 'includes/class-rankfoundry-seo-api.php';
+        $api = new RankFoundry_SEO_API();
+
     }
 
     /**
