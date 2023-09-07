@@ -36,18 +36,27 @@ class RankFoundry_SEO {
         $this->load_dependencies();
         $this->set_locale();
         $this->initialize_update_checker();
-        $this->define_admin_hooks();
         $this->define_public_hooks();
+
+        if (is_admin()) {
+            $this->define_admin_hooks();
+        }
     }
 
     /**
      * Load the required dependencies for this plugin.
      */
     private function load_dependencies() {
-        // Include other required files here
-        // For example, the API and sync classes, once they're set up.
+
         require_once RANKFOUNDRY_SEO_PLUGIN_DIR . 'includes/class-rankfoundry-seo-api.php';
         require_once RANKFOUNDRY_SEO_PLUGIN_DIR . 'includes/class-rankfoundry-seo-sync.php';
+        require_once RANKFOUNDRY_SEO_PLUGIN_DIR . 'includes/class-rankfoundry-seo-cron.php';
+
+        // Add action for our cron hook
+        add_action('rankfoundry_seo_sync', array('RankFoundry_SEO_Sync', 'sync'));
+        
+        // Add custom cron schedules
+        add_filter('cron_schedules', array('RankFoundry_SEO_Cron', 'custom_cron_schedules'));
     }
 
     /**
@@ -78,7 +87,15 @@ class RankFoundry_SEO {
      * Register all of the hooks related to the admin area functionality.
      */
     private function define_admin_hooks() {
-        // This will involve enqueueing scripts/styles for the admin, and other related functions.
+
+        require_once RANKFOUNDRY_SEO_PLUGIN_DIR . 'admin/class-rankfoundry-seo-admin.php';
+        $this->admin = new RankFoundry_SEO_Admin($this->get_plugin_name(), $this->get_version());
+
+        add_action('admin_menu', array($this->admin, 'add_settings_page'));
+        add_action('admin_init', array($this->admin, 'register_settings'));
+
+        // Add AJAX handler for the manual sync
+        add_action('wp_ajax_manual_sync', array($this->admin, 'manual_sync'));
     }
 
     /**
@@ -94,5 +111,6 @@ class RankFoundry_SEO {
     public function run() {
         // Any code that needs to execute upon plugin initialization would go here.
     }
+
 }
 
