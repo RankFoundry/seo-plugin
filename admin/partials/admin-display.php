@@ -6,7 +6,7 @@ $last_sync = get_option('rankfoundry_seo_last_sync', 'Never');
 <div class="wrap">
     <h2>RankFoundry SEO Settings</h2>
     <form method="post" action="options.php">
-        <?php settings_fields('rankfoundry_seo'); ?>
+        <?php settings_fields($this->plugin_name); ?>
         <table class="form-table">
             <tr valign="top">
                 <th scope="row">SEO Command Center API Key</th>
