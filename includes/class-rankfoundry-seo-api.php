@@ -21,7 +21,7 @@ class RankFoundry_SEO_API {
     
         $post_data = [
             'post_title'    => sanitize_text_field($params['title']),
-            'post_content'  => $params['content'],
+            'post_content'  => wp_kses_post($params['content']),
             'post_status'   => sanitize_text_field($params['status']),
             'post_author'   => intval($params['author']),
             'post_category' => [intval($params['category'])], // Assuming category is an ID
