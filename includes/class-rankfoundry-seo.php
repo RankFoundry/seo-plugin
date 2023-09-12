@@ -99,8 +99,10 @@ class RankFoundry_SEO {
         add_action('admin_menu', array($this->admin, 'add_settings_page'));
         add_action('admin_init', array($this->admin, 'register_settings'));
 
-        // Add AJAX handler for the manual sync
+        // Add AJAX handler for the sync
         add_action('wp_ajax_manual_sync', array($this->admin, 'manual_sync'));
+        add_action('wp_ajax_activate_sync', array($this->admin, 'activate_sync'));
+        add_action('wp_ajax_deactivate_sync', array($this->admin, 'deactivate_sync'));
     }
 
     /**

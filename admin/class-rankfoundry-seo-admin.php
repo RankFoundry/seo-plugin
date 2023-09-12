@@ -34,14 +34,24 @@ class RankFoundry_SEO_Admin {
     // Register settings
     public function register_settings() {
         register_setting($this->plugin_name, $this->api_key_option_name);
+        register_setting($this->plugin_name, 'rankfoundry_seo_sync_activation');
     }
 
     public function manual_sync() {
-       
         RankFoundry_SEO_Sync::sync();
-        
-        // Return a response (this can be more detailed based on sync success/failure)
         echo json_encode(['success' => true, 'message' => 'Synced successfully']);
+        exit;
+    }
+
+    public function activate_sync() {
+        RankFoundry_SEO_Cron::schedule_cron_jobs();
+        echo json_encode(['success' => true, 'message' => 'Sync activated successfully']);
+        exit;
+    }
+    
+    public function deactivate_sync() {
+        RankFoundry_SEO_Cron::unschedule_cron_jobs();
+        echo json_encode(['success' => true, 'message' => 'Sync deactivated successfully']);
         exit;
     }
 }
