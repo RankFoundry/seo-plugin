@@ -44,8 +44,8 @@ class RankFoundry_SEO_Admin {
     }
 
     public function activate_sync() {
-        RankFoundry_SEO_Cron::schedule_cron_jobs();
         update_option('rankfoundry_seo_sync_activation', '1');
+        RankFoundry_SEO_Cron::schedule_cron_jobs();
         echo json_encode(['success' => true, 'message' => 'Sync activated successfully']);
         exit;
     }
