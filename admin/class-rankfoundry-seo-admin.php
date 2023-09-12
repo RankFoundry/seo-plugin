@@ -51,7 +51,7 @@ class RankFoundry_SEO_Admin {
         }
 
         RankFoundry_SEO_Cron::schedule_cron_jobs();
-        update_option('rankfoundry_seo_job_active', '1');
+        update_option('rankfoundry_seo_sync_active', '1');
         echo json_encode(['success' => true, 'message' => 'Sync activated successfully']);
         exit;
     }
@@ -64,7 +64,7 @@ class RankFoundry_SEO_Admin {
         }
 
         RankFoundry_SEO_Cron::unschedule_cron_jobs();
-        update_option('rankfoundry_seo_job_active', '0');
+        update_option('rankfoundry_seo_sync_active', '0');
         echo json_encode(['success' => true, 'message' => 'Sync deactivated successfully']);
         exit;
     }

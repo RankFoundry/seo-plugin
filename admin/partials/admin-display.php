@@ -1,7 +1,7 @@
 <?php
 $api_key = get_option('rankfoundry_seo_api_key');
 $last_sync = get_option('rankfoundry_seo_last_sync', 'Never');
-$sync_activation = get_option('rankfoundry_seo_sync_activation', 'off');
+$sync_activation = get_option('rankfoundry_seo_sync_activation', '0');
 ?>
 
 <div class="wrap">
@@ -12,7 +12,7 @@ $sync_activation = get_option('rankfoundry_seo_sync_activation', 'off');
             <tr valign="top">
                 <th scope="row">SEO Command Center Sync</th>
                 <td>
-                    <input type="checkbox" name="rankfoundry_seo_sync_activation" value="on" <?php checked($sync_activation, 'on'); ?> />
+                    <input type="checkbox" name="rankfoundry_seo_sync_activation" value="on" <?php checked($sync_activation, '1'); ?> />
                     Enable Sync
                 </td>
             </tr>
