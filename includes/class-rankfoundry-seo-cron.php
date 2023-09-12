@@ -14,7 +14,9 @@ class RankFoundry_SEO_Cron {
      * Schedule our cron jobs.
      */
     public static function schedule_cron_jobs() {
+        error_log("Inside schedule_cron_jobs");
         if (!wp_next_scheduled('rankfoundry_seo_sync')) {
+            error_log("Scheduling the cron job");
             wp_schedule_event(time(), 'rankfoundry_seo_hourly', 'rankfoundry_seo_sync');
         }
     }
