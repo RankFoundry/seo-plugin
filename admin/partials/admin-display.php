@@ -34,9 +34,6 @@ $sync_activation = get_option('rankfoundry_seo_sync_activation', '0');
 </div>
 
 <script>
-    // Add a nonce for security
-    let nonce = '<?php echo wp_create_nonce("rankfoundry_seo_sync_activation_nonce"); ?>';
-
     document.querySelector('[name="rankfoundry_seo_sync_activation"]').addEventListener('change', function() {
         let action = this.checked ? 'activate_sync' : 'deactivate_sync';
 
@@ -47,14 +44,14 @@ $sync_activation = get_option('rankfoundry_seo_sync_activation', '0');
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: 'action=' + action + '&nonce=' + nonce,
+                body: 'action=' + action,
             })
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
                     alert(data.message);
                 } else {
-                    alert('Operation failed!');
+                    alert('Operation failed! ' + (data.message || 'Unknown error.'));
                     // Toggle the checkbox back to its original state if the operation failed
                     this.checked = !this.checked;
                 }

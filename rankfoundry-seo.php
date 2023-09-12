@@ -12,7 +12,7 @@
  * Plugin Name: RankFoundry SEO
  * Plugin URI:  https://rankfoundry.com/plugins/seo
  * Description: An integration bridge between WordPress and RankFoundry SEO, enabling real-time data synchronization and updates via API.
- * Version:     1.0.23
+ * Version:     1.0.24
  * Author:      Rank Foundry
  * Author URI:  https://rankfoundry.com
  * License:     GPL-2.0+
@@ -28,7 +28,7 @@ if (!defined('WPINC')) {
 
 // Define plugin version
 if (!defined('RANKFOUNDRY_SEO_VERSION')) {
-    define('RANKFOUNDRY_SEO_VERSION', '1.0.23');
+    define('RANKFOUNDRY_SEO_VERSION', '1.0.24');
 }
 
 // Define plugin directory path
