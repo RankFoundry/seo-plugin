@@ -28,7 +28,7 @@ if (!defined('WPINC')) {
 
 // Define plugin version
 if (!defined('RANKFOUNDRY_SEO_VERSION')) {
-    define('RANKFOUNDRY_SEO_VERSION', '1.0.17');
+    define('RANKFOUNDRY_SEO_VERSION', '1.0.18');
 }
 
 // Define plugin directory path

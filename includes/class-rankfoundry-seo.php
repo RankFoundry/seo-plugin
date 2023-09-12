@@ -77,7 +77,8 @@ class RankFoundry_SEO {
         $myUpdateChecker = PucFactory::buildUpdateChecker(
             'https://github.com/rankfoundry/seo-plugin/',
             RANKFOUNDRY_SEO_FILE,
-            'rankfoundry-seo'
+            'rankfoundry-seo',
+            48
         );
 
         //Set the branch that contains the stable release.
