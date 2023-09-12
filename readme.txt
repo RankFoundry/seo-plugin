@@ -4,7 +4,7 @@ Donate link: https://rankfoundry.com/
 Tags: SEO, Content, RankFoundry
 Requires at least: 6.0
 Tested up to: 6.3.1
-Stable tag: 1.0.27
+Stable tag: 1.1.0
 Requires PHP: 8.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -15,29 +15,12 @@ An integration bridge between WordPress and RankFoundry SEO, enabling real-time 
 
 == Changelog ==
 
-= 1.0.25 =
-* Add: Cron Debugging
-
-= 1.0.24 =
+= 1.1.0 =
+* Update: Admin Display
 * Add: Sync Job Debugging
-
-= 1.0.23 =
-* Fix: Sync Job Activation Option Name
-
-= 1.0.22 =
-* Fix: Sync Job Activation Option Name
-
-= 1.0.21 =
 * Update: Sync Job Settings
-
-= 1.0.20 =
 * Add: Sync Job Enable/Disable Toggle to Admin
 * Remove: Forced Sync Job on plugin activation
-
-= 1.0.19 =
-* Fix: Versioning issue
-
-= 1.0.18 =
 * Add: Set update check to 48 hours
 
 = 1.0.17 =
