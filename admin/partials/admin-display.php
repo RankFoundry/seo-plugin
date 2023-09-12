@@ -34,6 +34,9 @@ $sync_activation = get_option('rankfoundry_seo_sync_activation', 'off');
 </div>
 
 <script>
+    // Add a nonce for security
+    let nonce = '<?php echo wp_create_nonce("rankfoundry_seo_sync_activation_nonce"); ?>';
+
     document.querySelector('[name="rankfoundry_seo_sync_activation"]').addEventListener('change', function() {
         let action = this.checked ? 'activate_sync' : 'deactivate_sync';
 
@@ -44,7 +47,7 @@ $sync_activation = get_option('rankfoundry_seo_sync_activation', 'off');
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: 'action=' + action,
+                body: 'action=' + action + '&nonce=' + nonce,
             })
             .then(response => response.json())
             .then(data => {

@@ -44,13 +44,27 @@ class RankFoundry_SEO_Admin {
     }
 
     public function activate_sync() {
+        // Verify nonce
+        if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'rankfoundry_seo_job_activation_nonce')) {
+            echo json_encode(['success' => false, 'message' => 'Nonce verification failed.']);
+            exit;
+        }
+
         RankFoundry_SEO_Cron::schedule_cron_jobs();
+        update_option('rankfoundry_seo_job_active', '1');
         echo json_encode(['success' => true, 'message' => 'Sync activated successfully']);
         exit;
     }
     
     public function deactivate_sync() {
+        // Verify nonce
+        if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'rankfoundry_seo_job_activation_nonce')) {
+            echo json_encode(['success' => false, 'message' => 'Nonce verification failed.']);
+            exit;
+        }
+
         RankFoundry_SEO_Cron::unschedule_cron_jobs();
+        update_option('rankfoundry_seo_job_active', '0');
         echo json_encode(['success' => true, 'message' => 'Sync deactivated successfully']);
         exit;
     }

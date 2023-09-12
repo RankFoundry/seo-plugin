@@ -12,7 +12,7 @@
  * Plugin Name: RankFoundry SEO
  * Plugin URI:  https://rankfoundry.com/plugins/seo
  * Description: An integration bridge between WordPress and RankFoundry SEO, enabling real-time data synchronization and updates via API.
- * Version:     1.0.20
+ * Version:     1.0.21
  * Author:      Rank Foundry
  * Author URI:  https://rankfoundry.com
  * License:     GPL-2.0+
@@ -28,7 +28,7 @@ if (!defined('WPINC')) {
 
 // Define plugin version
 if (!defined('RANKFOUNDRY_SEO_VERSION')) {
-    define('RANKFOUNDRY_SEO_VERSION', '1.0.20');
+    define('RANKFOUNDRY_SEO_VERSION', '1.0.21');
 }
 
 // Define plugin directory path
@@ -49,6 +49,9 @@ require_once RANKFOUNDRY_SEO_PLUGIN_DIR . 'includes/class-rankfoundry-seo.php';
 
 // Generate secret key on plugin activation
 register_activation_hook(RANKFOUNDRY_SEO_FILE, array('RankFoundry_SEO_Sync', 'generate_secret_key'));
+
+// Remove our scheduled cron jobs on plugin deactivation
+register_deactivation_hook(RANKFOUNDRY_SEO_FILE, array('RankFoundry_SEO_Cron', 'unschedule_cron_jobs'));
 
 
 // Begin execution of the plugin.
