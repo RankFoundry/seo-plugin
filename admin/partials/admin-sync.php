@@ -5,11 +5,11 @@ $sync_activation = get_option('rankfoundry_seo_sync_activation', '0');
 ?>
 
 <div class="wrap">
-    <h1>RankFoundry SEO Settings</h1>
+    <h1>RankFoundry SEO</h1>
+    <h2>SEO Command Center Sync Settings</h2>
     <form method="post" action="options.php">
         <?php settings_fields($this->plugin_name); ?>
 
-        <h2>SEO Command Center Sync</h2>
         <table class="form-table">
             <tr valign="top">
                 <th scope="row">Enable Sync</th>
