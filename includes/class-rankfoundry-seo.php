@@ -96,7 +96,7 @@ class RankFoundry_SEO {
         require_once RANKFOUNDRY_SEO_PLUGIN_DIR . 'admin/class-rankfoundry-seo-admin.php';
         $this->admin = new RankFoundry_SEO_Admin($this->plugin_name, $this->version);
 
-        add_action('admin_menu', array($this->admin, 'add_settings_page'));
+        add_action('admin_menu', array($this->admin, 'add_menu'));
         add_action('admin_init', array($this->admin, 'register_settings'));
 
         // Add AJAX handler for the sync
