@@ -58,7 +58,7 @@ class RankFoundry_SEO_Admin {
             $this::page_slug,
             array($this, 'display_settings_page'),
             'data:image/svg+xml;base64,' . base64_encode( $menu_icon ),
-            5
+            4
         );
 
         add_submenu_page($this::page_slug, 'General', 'General', 'manage_options', $this::page_slug, array($this, 'display_general_page'));
