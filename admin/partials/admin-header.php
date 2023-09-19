@@ -14,7 +14,7 @@ if(isset($activeMenu[$currentPage])) {
 <!-- Breadcrumb -->
 <div class="wrap bg-slate-50 rounded p-2">
     <nav class="pl-6 text-sm font-medium text-slate-500" aria-label="Breadcrumb">
-        <a href="<?php echo menu_page_url('rankfoundry-settings', false); ?>" class="hover:text-slate-700">Home</a>
+        <a href="<?php echo menu_page_url('rankfoundry-seo', false); ?>" class="hover:text-slate-700">Home</a>
         <span class="mx-2 text-slate-400">/</span>
         <span class="text-slate-700" aria-current="page"><?php echo $currentPage; ?></span>
     </nav>
@@ -34,9 +34,9 @@ if(isset($activeMenu[$currentPage])) {
     <div class="hidden sm:block">
         <div class="pl-8">
             <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-                <a href="<?php echo menu_page_url('rankfoundry-settings', false); ?>" class="<?php echo $activeMenu['Dashboard']; ?> border-transparent text-slate-500 hover:text-slate-700 whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium">Dashboard</a>
-                <a href="<?php echo menu_page_url('rankfoundry-settings-sync', false); ?>" class="<?php echo $activeMenu['Sync']; ?> border-transparent text-slate-500 hover:text-slate-700 whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium">Sync</a>
-                <a href="<?php echo menu_page_url('rankfoundry-settings-cron', false); ?>" class="<?php echo $activeMenu['Cron']; ?> border-transparent text-slate-500 hover:text-slate-700 whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium">Cron</a>
+                <a href="<?php echo menu_page_url('rankfoundry-seo', false); ?>" class="<?php echo $activeMenu['Dashboard']; ?> border-transparent text-slate-500 hover:text-slate-700 whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium">Dashboard</a>
+                <a href="<?php echo menu_page_url('rankfoundry-seo-sync', false); ?>" class="<?php echo $activeMenu['Sync']; ?> border-transparent text-slate-500 hover:text-slate-700 whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium">Sync</a>
+                <a href="<?php echo menu_page_url('rankfoundry-seo-cron', false); ?>" class="<?php echo $activeMenu['Cron']; ?> border-transparent text-slate-500 hover:text-slate-700 whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium">Cron</a>
             </nav>
         </div>
     </div>

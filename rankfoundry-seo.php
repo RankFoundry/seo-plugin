@@ -12,7 +12,7 @@
  * Plugin Name: RankFoundry SEO
  * Plugin URI:  https://rankfoundry.com/plugins/seo
  * Description: An integration bridge between WordPress and RankFoundry SEO, enabling real-time data synchronization and updates via API.
- * Version:     1.1.9
+ * Version:     1.1.10
  * Author:      Rank Foundry
  * Author URI:  https://rankfoundry.com
  * License:     GPL-2.0+
@@ -28,7 +28,7 @@ if (!defined('WPINC')) {
 
 // Define plugin version
 if (!defined('RANKFOUNDRY_SEO_VERSION')) {
-    define('RANKFOUNDRY_SEO_VERSION', '1.1.9');
+    define('RANKFOUNDRY_SEO_VERSION', '1.1.10');
 }
 
 // Define plugin directory path
@@ -52,18 +52,6 @@ register_activation_hook(RANKFOUNDRY_SEO_FILE, array('RankFoundry_SEO_Sync', 'ge
 
 // Remove our scheduled cron jobs on plugin deactivation
 register_deactivation_hook(RANKFOUNDRY_SEO_FILE, array('RankFoundry_SEO_Cron', 'unschedule_cron_jobs'));
-
-
-// supress admin notifications
-add_action('admin_head', 'suppress_admin_notices');
-
-function suppress_admin_notices() {
-    global $pagenow;
-
-    if ($pagenow == 'admin.php' && isset($_GET['page']) && $_GET['page'] == 'rankfoundry-settings') {
-        remove_all_actions('admin_notices');
-    }
-}
 
 
 // Begin execution of the plugin.

@@ -7,7 +7,7 @@ include RANKFOUNDRY_SEO_PLUGIN_DIR . '/admin/partials/admin-header.php';
     <div class="px-4 sm:px-6 lg:px-8">
         <div class="sm:flex sm:items-center">
             <div class="sm:flex-auto">
-                <h2 class="text-base font-semibold leading-6 text-slate-900">Cron Management</h2>
+                <h1 class="text-base font-semibold leading-6 text-slate-900">Cron Management</h1>
                 <p class="mt-2 text-sm text-slate-700">Manage scheduled events and custom schedules.</p>
             </div>
             <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">

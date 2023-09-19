@@ -96,6 +96,7 @@ class RankFoundry_SEO {
         require_once RANKFOUNDRY_SEO_PLUGIN_DIR . 'admin/class-rankfoundry-seo-admin.php';
         $this->admin = new RankFoundry_SEO_Admin($this->plugin_name, $this->version);
 
+        add_action('in_admin_header', array($this->admin, 'rankfoundry_seo_remove_other_notices'), 1000); // The high priority ensures it runs after other plugins.
         add_action('admin_enqueue_scripts', array($this->admin, 'enqueue_styles'));
         add_action('admin_menu', array($this->admin, 'add_menu'));
         add_action('admin_init', array($this->admin, 'register_settings'));

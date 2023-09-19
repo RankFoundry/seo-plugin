@@ -26,7 +26,7 @@ class RankFoundry_SEO_Admin {
     private $options;
     public const option_group = "rankfoundry_group";
     public const option_key = "rankfoundry_options";
-    public const page_slug = "rankfoundry-settings";
+    public const page_slug = "rankfoundry-seo";
     public const page_title = "Rank Foundry Settings";
     public const menu_title = "Rank Foundry";
     private $api_key_option_name = 'rankfoundry_seo_api_key';  // Name of the option where API key is stored
@@ -105,10 +105,51 @@ class RankFoundry_SEO_Admin {
 
     public function enqueue_styles() {
         // Only enqueue on your plugin's pages
-        $current_screen = get_current_screen();
-        if (strpos($current_screen->base, 'rankfoundry-settings') !== false) {
+        if (is_rankfoundry_seo_page()) {
             wp_enqueue_style('rankfoundry-seo-tailwind', plugin_dir_url(__DIR__) . 'assets/css/tailwind.css', array(), RANKFOUNDRY_SEO_VERSION);
             wp_enqueue_script('alpine', 'https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js', array(), null, true);
+        }
+    }
+
+    /**
+     * Check if the page is one of ours.
+     *
+     * @since 1.1.10
+     *
+     * @return bool
+     */
+    function is_rankfoundry_seo_page() {
+        if ( ! is_admin() && ( ! isset($_REQUEST['page']) || ! isset($_REQUEST['post_type']))) {
+            return false;
+        }
+
+        if (isset($_REQUEST['page'])) {
+            return 0 === strpos($_REQUEST['page'], 'rankfoundry-seo');
+        } elseif (isset($_REQUEST['post_type'])) {
+            if (is_array($_REQUEST['post_type']) && !empty($_REQUEST['post_type'])) {
+                return 0 === strpos($_REQUEST['post_type'][0], 'rankfoundry-seo');
+            } else {
+                return 0 === strpos($_REQUEST['post_type'], 'rankfoundry-seo');
+            }
+        }
+    }
+
+    /**
+     * Only add our notices on our pages.
+     *
+     * @since 1.1.10
+     *
+     * @return bool
+     */
+    function rankfoundry_seo_remove_other_notices() {
+        if (is_rankfoundry_seo_page()) {
+            remove_all_actions('network_admin_notices');
+            remove_all_actions('admin_notices');
+            remove_all_actions('user_admin_notices');
+            remove_all_actions('all_admin_notices');
+
+            // If in the future you have specific notices for your plugin, you can add them here.
+            // e.g., add_action('admin_notices', 'rankfoundry_seo_admin_notices');
         }
     }
 }
