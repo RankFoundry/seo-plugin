@@ -1,0 +1,11 @@
+{
+  "name": "rankfoundry-seo",
+  "version": "1.1.6",
+  "description": "An integration bridge between WordPress and RankFoundry SEO",
+  "scripts": {
+    "build": "tailwindcss build src/styles.css -o assets/css/tailwind.css"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.3.3"
+  }
+}
