@@ -105,7 +105,7 @@ class RankFoundry_SEO_Admin {
 
     public function enqueue_styles() {
         // Only enqueue on your plugin's pages
-        if (is_rankfoundry_seo_page()) {
+        if ($this->is_rankfoundry_seo_page()) {
             wp_enqueue_style('rankfoundry-seo-tailwind', plugin_dir_url(__DIR__) . 'assets/css/tailwind.css', array(), RANKFOUNDRY_SEO_VERSION);
             wp_enqueue_script('alpine', 'https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js', array(), null, true);
         }
@@ -118,7 +118,7 @@ class RankFoundry_SEO_Admin {
      *
      * @return bool
      */
-    function is_rankfoundry_seo_page() {
+    public function is_rankfoundry_seo_page() {
         if ( ! is_admin() && ( ! isset($_REQUEST['page']) || ! isset($_REQUEST['post_type']))) {
             return false;
         }
@@ -141,7 +141,7 @@ class RankFoundry_SEO_Admin {
      *
      * @return bool
      */
-    function rankfoundry_seo_remove_other_notices() {
+    public function rankfoundry_seo_remove_other_notices() {
         if (is_rankfoundry_seo_page()) {
             remove_all_actions('network_admin_notices');
             remove_all_actions('admin_notices');
