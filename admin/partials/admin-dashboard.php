@@ -7,7 +7,7 @@ include RANKFOUNDRY_SEO_PLUGIN_DIR . '/admin/partials/admin-header.php';
     <div class="px-4 sm:px-6 lg:px-8">
         <div class="sm:flex sm:items-center mb-6">
             <div class="sm:flex-auto">
-                <h1 class="text-base font-semibold leading-6 text-slate-900">Dashboard</h1>
+                <h2 class="text-base font-semibold leading-6 text-slate-900">Dashboard</h2>
                 <p class="mt-2 text-sm leading-6 text-slate-700">Dashboard</p>
             </div>
         </div>
