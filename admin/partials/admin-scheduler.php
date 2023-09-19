@@ -1,5 +1,5 @@
 <?php
-$currentPage = 'Cron';
+$currentPage = 'Scheduler';
 include RANKFOUNDRY_SEO_PLUGIN_DIR . '/admin/partials/admin-header.php';
 ?>
 

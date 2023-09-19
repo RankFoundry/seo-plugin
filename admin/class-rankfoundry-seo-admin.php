@@ -51,8 +51,8 @@ class RankFoundry_SEO_Admin {
         );
 
         add_submenu_page($this::page_slug, 'Dashboard', 'Dashboard', 'manage_options', $this::page_slug, array($this, 'display_dashboard_page'));
-        add_submenu_page($this::page_slug, 'Sync Settings', 'Sync', 'manage_options', $this::page_slug . '-sync', array($this, 'display_sync_page'));
-        add_submenu_page($this::page_slug, 'Cron Management', 'Cron', 'manage_options', $this::page_slug . '-cron', array($this, 'display_cron_page'));
+        add_submenu_page($this::page_slug, 'Integration', 'Integration', 'manage_options', $this::page_slug . '-integration', array($this, 'display_integration_page'));
+        add_submenu_page($this::page_slug, 'Scheduler', 'Scheduler', 'manage_options', $this::page_slug . '-scheduler', array($this, 'display_scheduler_page'));
     }
 
     // Display the general page
@@ -60,14 +60,14 @@ class RankFoundry_SEO_Admin {
         include_once 'partials/admin-dashboard.php';
     }
     
-    // Display the sync page
-    public function display_sync_page() {
-        include_once 'partials/admin-sync.php';
+    // Display the integration page
+    public function display_integration_page() {
+        include_once 'partials/admin-integration.php';
     }
 
-    // Display the cron page
-    public function display_cron_page() {
-        include_once 'partials/admin-cron.php';
+    // Display the scheduler page
+    public function display_scheduler_page() {
+        include_once 'partials/admin-scheduler.php';
     }
 
     // Register settings
@@ -142,7 +142,7 @@ class RankFoundry_SEO_Admin {
      * @return bool
      */
     public function rankfoundry_seo_remove_other_notices() {
-        if (is_rankfoundry_seo_page()) {
+        if ($this->is_rankfoundry_seo_page()) {
             remove_all_actions('network_admin_notices');
             remove_all_actions('admin_notices');
             remove_all_actions('user_admin_notices');

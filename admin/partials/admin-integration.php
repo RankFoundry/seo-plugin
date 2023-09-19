@@ -1,5 +1,5 @@
 <?php
-$currentPage = 'Sync';
+$currentPage = 'Integration';
 include RANKFOUNDRY_SEO_PLUGIN_DIR . '/admin/partials/admin-header.php';
 
 $api_key = get_option('rankfoundry_seo_api_key');
