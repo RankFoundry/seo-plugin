@@ -27,11 +27,9 @@ if(isset($activeMenu[$currentPage])) {
 </div>
 
 <?php
-    // Capture and print any admin notices
-    ob_start();
-    do_action('admin_notices');
-    $admin_notices = ob_get_clean();
-    echo $admin_notices;
+    // Print the captured notices
+    global $captured_admin_notices;
+    echo $captured_admin_notices;
 ?>
 
 <!-- Navigation -->

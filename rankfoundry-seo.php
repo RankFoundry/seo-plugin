@@ -12,7 +12,7 @@
  * Plugin Name: RankFoundry SEO
  * Plugin URI:  https://rankfoundry.com/plugins/seo
  * Description: An integration bridge between WordPress and RankFoundry SEO, enabling real-time data synchronization and updates via API.
- * Version:     1.1.7
+ * Version:     1.1.8
  * Author:      Rank Foundry
  * Author URI:  https://rankfoundry.com
  * License:     GPL-2.0+
@@ -28,7 +28,7 @@ if (!defined('WPINC')) {
 
 // Define plugin version
 if (!defined('RANKFOUNDRY_SEO_VERSION')) {
-    define('RANKFOUNDRY_SEO_VERSION', '1.1.7');
+    define('RANKFOUNDRY_SEO_VERSION', '1.1.8');
 }
 
 // Define plugin directory path
@@ -54,21 +54,26 @@ register_activation_hook(RANKFOUNDRY_SEO_FILE, array('RankFoundry_SEO_Sync', 'ge
 register_deactivation_hook(RANKFOUNDRY_SEO_FILE, array('RankFoundry_SEO_Cron', 'unschedule_cron_jobs'));
 
 
+// Control where the admin notices appear
+global $captured_admin_notices;
+
+function capture_admin_notices() {
+    global $captured_admin_notices;
+    
+    ob_start();
+    do_action('admin_notices');
+    $captured_admin_notices = ob_get_clean();
+
+    // Remove all other actions attached to admin_notices to prevent duplicate printing
+    remove_all_actions('admin_notices');
+}
+add_action('admin_head', 'capture_admin_notices');
+
+
 // Begin execution of the plugin.
 function run_rankfoundry_seo() {
     $plugin = new RankFoundry_SEO();
     $plugin->run();
 }
 
-run_rankfoundry_seo();
-
-// This is for testing purposes only
-add_action('admin_init', 'test_schedule_cron_jobs');
-
-function test_schedule_cron_jobs() {
-    if (isset($_GET['test_schedule_cron'])) {
-        RankFoundry_SEO_Cron::schedule_cron_jobs();
-        die('Cron jobs scheduled.');
-    }
-}
-        
+run_rankfoundry_seo();      
