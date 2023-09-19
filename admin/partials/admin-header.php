@@ -26,6 +26,14 @@ if(isset($activeMenu[$currentPage])) {
     <h1 class="ml-4 text-2xl font-semibold text-slate-900">Rank Foundry SEO</h1>
 </div>
 
+<?php
+    // Capture and print any admin notices
+    ob_start();
+    do_action('admin_notices');
+    $admin_notices = ob_get_clean();
+    echo $admin_notices;
+?>
+
 <!-- Navigation -->
 <div class="mb-0">
     

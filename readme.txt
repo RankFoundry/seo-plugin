@@ -4,7 +4,7 @@ Donate link: https://rankfoundry.com/
 Tags: SEO, Content, RankFoundry
 Requires at least: 6.0
 Tested up to: 6.3.1
-Stable tag: 1.1.6
+Stable tag: 1.1.7
 Requires PHP: 8.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -14,6 +14,10 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 An integration bridge between WordPress and RankFoundry SEO, enabling real-time data synchronization and updates via API.
 
 == Changelog ==
+
+= 1.1.7 =
+* Update: Sync Activation
+* Update: Admin Notices Location
 
 = 1.1.6 =
 * Update: Admin Pages for Tailwind
