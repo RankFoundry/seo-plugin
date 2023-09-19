@@ -64,12 +64,36 @@ class RankFoundry_SEO_Sync {
             ];
         }, $users_raw);
 
+        // Gather WordPress updates data
+        $plugin_updates = get_plugin_updates();
+        $theme_updates  = get_theme_updates();
+        $core_updates   = get_core_updates();
+
+        $updates = [
+            'plugins' => [],
+            'themes'  => [],
+            'core'    => null
+        ];
+
+        foreach ($plugin_updates as $plugin) {
+            $updates['plugins'][] = $plugin->Name;
+        }
+
+        foreach ($theme_updates as $theme) {
+            $updates['themes'][] = $theme->Name;
+        }
+
+        if (!empty($core_updates) && $core_updates[0]->response == 'upgrade') {
+            $updates['core'] = $core_updates[0]->current;
+        }
+
         // Construct payload
         $payload = [
             'url' => site_url(),
             'secret_key' => $secret_key,
             'categories' => $categories,
             'users' => $users,
+            'updates' => $updates,
         ];
 
         $data = [

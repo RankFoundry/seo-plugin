@@ -55,14 +55,14 @@ class RankFoundry_SEO_Admin {
             $this::page_title,
             $this::menu_title,
             'manage_options',
-            $this::page_slug.'-general',
+            $this::page_slug,
             array($this, 'display_general_page'),
             'data:image/svg+xml;base64,' . base64_encode( $menu_icon ),
             4
         );
 
-        add_submenu_page($this::page_slug.'-general', 'General', 'General', 'manage_options', $this::page_slug .'-general', array($this, 'display_general_page'));
-        add_submenu_page($this::page_slug.'-general', 'Sync Settings', 'Sync', 'manage_options', $this::page_slug.'-sync', array($this, 'display_sync_page'));
+        add_submenu_page($this::page_slug, 'General', 'General', 'manage_options', $this::page_slug, array($this, 'display_general_page'));
+        add_submenu_page($this::page_slug, 'Sync Settings', 'Sync', 'manage_options', $this::page_slug . '-sync', array($this, 'display_sync_page'));
     }
 
     // Display the general page
