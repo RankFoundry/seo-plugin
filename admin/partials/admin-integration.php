@@ -11,8 +11,8 @@ $sync_activation = get_option('rankfoundry_seo_sync_activation', '0');
     <div class="px-4 sm:px-6 lg:px-8">
         <div class="sm:flex sm:items-center mb-6">
             <div class="sm:flex-auto">
-                <h1 class="text-base font-semibold leading-6 text-slate-900">SEO Command Center Sync Settings</h1>
-                <p class="mt-2 text-sm leading-6 text-slate-700">Configure synchronization settings and API keys.</p>
+                <h1 class="text-base font-semibold leading-6 text-slate-900">Integration</h1>
+                <p class="mt-2 text-sm leading-6 text-slate-700">Manage SEO Command Center integration settings.</p>
             </div>
         </div>
         
