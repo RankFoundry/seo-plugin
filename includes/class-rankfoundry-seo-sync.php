@@ -49,7 +49,8 @@ class RankFoundry_SEO_Sync {
         $categories = array_map(function($category) {
             return [
                 'id' => $category->cat_ID,
-                'name' => $category->name
+                'name' => $category->name,
+                'slug' => $category->slug
             ];
         }, $categories_raw);
 

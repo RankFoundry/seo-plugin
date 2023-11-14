@@ -61,6 +61,9 @@ class RankFoundry_SEO {
         require_once RANKFOUNDRY_SEO_PLUGIN_DIR . 'includes/class-rankfoundry-seo-api.php';
         $api = new RankFoundry_SEO_API();
 
+        //require_once RANKFOUNDRY_SEO_PLUGIN_DIR . 'includes/class-rankfoundry-seo-missed.php';
+        //$this->missed_scheduler = new RankFoundry_SEO_Missed();
+
     }
 
     /**
