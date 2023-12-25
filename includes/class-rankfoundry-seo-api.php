@@ -44,7 +44,7 @@ class RankFoundry_SEO_API {
         }
 
         if (isset($params['image_base64'])){
-            $image_id = $this->save_image($params['image_base64'], $params['image_slug'], $params['image_alt'], $params['author']);
+            $image_id = $this->save_image($params['image_base64'], $params['image_slug'], $params['image_title'], $params['image_alt'], $params['author']);
             set_post_thumbnail( $post_id, $image_id );
         }
     
@@ -62,7 +62,7 @@ class RankFoundry_SEO_API {
         return new WP_REST_Response(['message' => 'Post created successfully!', 'post_id' => $post_id], 200);
     }
     
-    public function save_image($image_base64, $image_slug, $image_alt, $author_id) {
+    public function save_image($image_base64, $image_slug, $image_title, $image_alt, $author_id) {
 
         // Upload dir.
         $upload_dir  = wp_upload_dir();
@@ -80,7 +80,7 @@ class RankFoundry_SEO_API {
     
         $attachment = array(
             'post_mime_type' => $file_type,
-            'post_title'     => sanitize_file_name($filename),
+            'post_title'     => $image_title,
             'post_content'   => '',
             'post_status'    => 'inherit',
             'post_author'    => $author_id
