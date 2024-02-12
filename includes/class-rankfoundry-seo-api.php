@@ -14,6 +14,11 @@ class RankFoundry_SEO_API {
             'callback' => [$this, 'create_post_callback'],
             'permission_callback' => [$this, 'permissions_check'],
         ]);
+        register_rest_route('rankfoundry-seo/v1', '/update-post-image', [
+            'methods' => 'POST',
+            'callback' => [$this, 'update_post_image_callback'],
+            'permission_callback' => [$this, 'permissions_check'],
+        ]);
     }
 
     public function create_post_callback($request) {
@@ -60,6 +65,17 @@ class RankFoundry_SEO_API {
         }
     
         return new WP_REST_Response(['message' => 'Post created successfully!', 'post_id' => $post_id], 200);
+    }
+
+    public function update_post_image_callback($request) {
+        $params = $request->get_json_params();
+
+        if (isset($params['image_base64'])){
+            $image_id = $this->save_image($params['image_base64'], $params['image_slug'], $params['image_title'], $params['image_alt'], $params['author']);
+            set_post_thumbnail( $params['post_id'], $image_id );
+        }
+    
+        return new WP_REST_Response(['message' => 'Post image updated successfully!', 'image_id' => $image_id], 200);
     }
     
     public function save_image($image_base64, $image_slug, $image_title, $image_alt, $author_id) {
